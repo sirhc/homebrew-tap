@@ -1,8 +1,8 @@
 class Ops < Formula
   desc "Where ops scripts cultivate and grow!"
   homepage "https://github.com/Tealium/opsbox"
-  url "https://github.com/Tealium/opsbox/archive/refs/tags/REL.20241014.1.tar.gz", headers: ["Authorization: Bearer #{ENV['HOMEBREW_GITHUB_API_TOKEN']}"]
-  sha256 "efe88cf3930783db97f611b32c836b02152586c9ff573008df3c76c89805af51"
+  url "https://github.com/Tealium/opsbox/archive/refs/tags/REL.20241206.1.tar.gz", headers: ["Authorization: Bearer #{ENV['HOMEBREW_GITHUB_API_TOKEN']}"]
+  sha256 "9ac4b98f5ad5353d40e337f5ce890aa944a5e7043b84cb19e08b44fafc85e4e5"
   revision 1
   head "https://github.com/Tealium/opsbox.git", branch: "main"
 
@@ -37,7 +37,7 @@ class Ops < Formula
   # depends_on "zsh"
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-X 'github.com/tealium/opsbox/ops/cmds.buildTag=REL.20241014.1'"), "./ops"
+    system "go", "build", *std_go_args(ldflags: "-X 'github.com/tealium/opsbox/ops/cmds.buildTag=REL.20241206.1'"), "./ops"
   end
 
   test do
