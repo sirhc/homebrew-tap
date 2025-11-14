@@ -1,8 +1,8 @@
 class GithubCopilot < Formula
   desc "GitHub Copilot CLI"
   homepage "https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli"
-  url "https://registry.npmjs.org/@github/copilot/-/copilot-0.0.354-0.tgz"
-  sha256 "262aca32105eb7ed29c5f67fd7ceedff3bbacc9ad88ffb099852253fd01e3cf0"
+  url "https://registry.npmjs.org/@github/copilot/-/copilot-0.0.358.tgz"
+  sha256 "5841a00db7a3dfed91b587b51237e024c3320e596c5e22267beb2e8d6fd5ac74"
 
   depends_on "node"
 
