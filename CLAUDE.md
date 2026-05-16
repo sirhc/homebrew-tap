@@ -35,7 +35,7 @@ Formulas live as `.rb` files in the repo root. Each is a Ruby class inheriting f
 
 - **npm-based** (`atlassian-forge.rb`, `github-copilot.rb`): Use `system "npm", "install", *std_npm_args` with `bin.install_symlink`; depend on `node`.
 - **Go-based** (`ops.rb`, `pup.rb`): Use `system "go", "build", *std_go_args(...)` or `gox`; depend on `go` as a build dep.
-- **Python-based** (`htmltab.rb`, `task-tui.rb`): Use `virtualenv_install_with_resources` with `resource` blocks for dependencies.
+- **Python-based** (`htmltab.rb`, `task-tui.rb`): Use `virtualenv_install_with_resources` with `resource` blocks for dependencies. Include all transitive deps — e.g. `beautifulsoup4 >= 4.13` pulls in `typing-extensions` which must be listed explicitly.
 - **Simple installs** (`wd.rb`): Directly install scripts/man pages.
 
 ## External Commands
