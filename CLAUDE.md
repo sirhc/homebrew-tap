@@ -33,7 +33,7 @@ just sha256 <formula>.rb
 
 Formulas live as `.rb` files in the repo root. Each is a Ruby class inheriting from `Formula`. Common types in this tap:
 
-- **npm-based** (`github-copilot.rb`): Use `system "npm", "install", *std_npm_args` with `bin.install_symlink`; depend on `node`.
+- **npm-based**: Use `system "npm", "install", *std_npm_args` with `bin.install_symlink`; depend on `node`. (No formula of this type currently in the tap; `github-copilot.rb` was the prior example, since removed.)
 - **Go-based** (`ops.rb`): Use `system "go", "build", *std_go_args(...)`; depend on `go` as a build dep.
 - **Python-based** (`htmltab.rb`, `task-tui.rb`, `hledger-textual.rb`): Use `virtualenv_install_with_resources` with `resource` blocks for dependencies. Include all transitive deps — e.g. `beautifulsoup4 >= 4.13` pulls in `typing-extensions` which must be listed explicitly. When upstream only ships a prebuilt wheel (no sdist buildable without extra tooling like Rust/maturin), install the wheel resource directly with `venv.pip_install_and_link` instead of going through `virtualenv_install_with_resources` (see `hledger-textual.rb`).
 - **Prebuilt binary releases** (`hister.rb`): Use `on_macos`/`on_linux` with `on_arm`/`on_intel` blocks pointing at platform-specific release URLs instead of building from source; useful when the real build requires toolchains this tap doesn't want to depend on (e.g. a full frontend build). Can include a `service do` block for `brew services`.
