@@ -12,6 +12,9 @@ class Htmltab < Formula
   depends_on "python-setuptools" => :build
   depends_on "python@3.13"
 
+  uses_from_macos "libxml2", since: :ventura
+  uses_from_macos "libxslt"
+
   resource "beautifulsoup4" do
     url "https://files.pythonhosted.org/packages/c3/b0/1c6a16426d389813b48d95e26898aff79abbde42ad353958ad95cc8c9b21/beautifulsoup4-4.14.3.tar.gz"
     sha256 "6292b1c5186d356bba669ef9f7f051757099565ad9ada5dd630bd9de5fa7fb86"
