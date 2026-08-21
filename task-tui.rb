@@ -3,8 +3,8 @@ class TaskTui < Formula
 
   desc "Modern, interactive TUI for Taskwarrior built with Textual"
   homepage "https://github.com/lbesnard/task-tui"
-  url "https://github.com/lbesnard/task-tui/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "d6bbd6181f6f0bb86c372478cb34f167487a949d56e1776ce529b973581a9405"
+  url "https://github.com/lbesnard/task-tui/archive/refs/tags/v1.7.0.tar.gz"
+  sha256 "f4b83dd23fed9b985f46587fee3ea45a86228bcad06102393e513eb92d3965ad"
   license "MIT"
   head "https://github.com/lbesnard/task-tui.git", branch: "main"
 
