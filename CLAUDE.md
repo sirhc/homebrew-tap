@@ -33,14 +33,13 @@ just sha256 <formula>.rb
 
 Formulas live as `.rb` files in the repo root. Each is a Ruby class inheriting from `Formula`. Common types in this tap:
 
-- **npm-based** (`atlassian-forge.rb`, `github-copilot.rb`): Use `system "npm", "install", *std_npm_args` with `bin.install_symlink`; depend on `node`.
-- **Go-based** (`ops.rb`, `pup.rb`): Use `system "go", "build", *std_go_args(...)` or `gox`; depend on `go` as a build dep.
-- **Python-based** (`htmltab.rb`, `task-tui.rb`): Use `virtualenv_install_with_resources` with `resource` blocks for dependencies. Include all transitive deps — e.g. `beautifulsoup4 >= 4.13` pulls in `typing-extensions` which must be listed explicitly.
+- **npm-based** (`github-copilot.rb`): Use `system "npm", "install", *std_npm_args` with `bin.install_symlink`; depend on `node`.
+- **Go-based** (`ops.rb`): Use `system "go", "build", *std_go_args(...)`; depend on `go` as a build dep.
+- **Python-based** (`htmltab.rb`, `task-tui.rb`, `hledger-textual.rb`): Use `virtualenv_install_with_resources` with `resource` blocks for dependencies. Include all transitive deps — e.g. `beautifulsoup4 >= 4.13` pulls in `typing-extensions` which must be listed explicitly. When upstream only ships a prebuilt wheel (no sdist buildable without extra tooling like Rust/maturin), install the wheel resource directly with `venv.pip_install_and_link` instead of going through `virtualenv_install_with_resources` (see `hledger-textual.rb`).
+- **Prebuilt binary releases** (`hister.rb`): Use `on_macos`/`on_linux` with `on_arm`/`on_intel` blocks pointing at platform-specific release URLs instead of building from source; useful when the real build requires toolchains this tap doesn't want to depend on (e.g. a full frontend build). Can include a `service do` block for `brew services`.
 - **Simple installs** (`wd.rb`): Directly install scripts/man pages.
 
-## External Commands
-
-The `cmd/` directory contains Homebrew external commands (e.g., `cmd/brew-recent.rb`), which add subcommands to `brew`. These use Homebrew's `AbstractCommand` API.
+Formulas needing an authenticated source fetch (e.g. a private GitHub repo) pass `headers:` on the `url` with a token from `ENV` (see `ops.rb`), and generally carry a `revision` since there's no public release tag to bump.
 
 ## Updating a Formula
 
